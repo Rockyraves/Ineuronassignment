@@ -1,0 +1,58 @@
+package Assignment2;
+
+public class Trainer {
+
+	String name;
+	String dept;
+	String email;
+	int id;
+	
+	public Trainer(String name1,String dept1,String email1,int id1)
+	{
+		name=name1;
+		dept=dept1;
+		email=email1;
+		id=id1;
+	}
+	
+	public void Selenium()
+	{
+		System.out.println("Trainer for selenium");
+	}
+	
+	public void DevOps()
+	{
+		System.out.println("Trainer for DevOps");
+	}
+	
+	public void WebTechnology()
+	{
+		System.out.println("Trainer for WebTechnology");
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		Trainer trainer1=new Trainer("Mukesh","Testing","mukesh@gmail.com",1);
+		trainer1.Selenium();
+		Trainer trainer2=new Trainer("Hitesh","Dev","mukesh@gmail.com",2);
+		trainer2.WebTechnology();
+		Trainer trainer3=new Trainer("Mukesh","DevOps","mukesh@gmail.com",3);
+		trainer3.DevOps();
+		
+	//**********************************************************
+		//Task-2
+		
+		Trainer tr[]= {trainer1,trainer2,trainer3};
+		System.out.println("Details of Trainer 1 :"+tr[0].name+","+tr[0].dept+","+tr[0].email+","+tr[0].id);
+		System.out.println("Details of Trainer 2 :"+tr[1].name+","+tr[1].dept+","+tr[1].email+","+tr[1].id);
+		System.out.println("Details of Trainer 3 :"+tr[2].name+","+tr[2].dept+","+tr[2].email+","+tr[2].id);
+		
+		
+		
+		
+		
+
+	}
+
+}
