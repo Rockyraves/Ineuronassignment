@@ -1,26 +1,54 @@
 package Assignment5;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Task1 {
 
 	public static void main(String[] args) {
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 		
-		List<String> l1=new ArrayList<String>();
-		l1.add("Java");
-		l1.add("Selenium");
-		l1.add("TestNG");
-		l1.add("Git");
-		l1.add("Github");
-		
-		List<String> l2=new ArrayList<String>();
-		
-		for(int i=l1.size()-1;i>=0;i--)
+		//*******************************************************************//		
+		String url=driver.getCurrentUrl();
+		if(url.endsWith("login"))
 		{
-			l2.add(l1.get(i));
+			System.out.println("Yes!! url Ends with Login");
 		}
-		System.out.println(l2);
+		else
+		{
+			System.out.println("No!!!!!!!!");
+		}
+		
+		//*******************************************************************//	
+		
+		if(url.contains("demo"))
+		{
+			System.out.println("Yes!! url contains demo in the url");
+		}
+		else
+		{
+			System.out.println("No!!!!!!!!");
+		}
+		//*******************************************************************//	
+		
+		String title=driver.getTitle();
+		if(title.contains("HRM"))
+		{
+			System.out.println("Yes!!.... HRM is present in the url");
+		}
+		else
+		{
+			System.out.println("No!!!!!!!!");
+		}
+		
+		driver.quit();
+		
+		
+
 	}
 
 }

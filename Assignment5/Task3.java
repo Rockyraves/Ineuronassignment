@@ -1,31 +1,35 @@
 package Assignment5;
 
-import java.util.ArrayList;
 import java.util.List;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Task3 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
 		
-		List<String> l1=new ArrayList<String>();
-		l1.add("Java");
-		l1.add("TestNG");
-		l1.add("Maven");
-		l1.add("Java");
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();
 		
-		List<String> l2=new ArrayList<String>();
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 		
-		for(String e:l1)
+		Thread.sleep(2000);//To avoid "NoSuchElementException" i used Thread.Sleep and waiting for 2 sec.
+		
+		List<WebElement> footerList=driver.findElements(By.xpath("//div[@class='orangehrm-login-footer-sm']/a"));
+		int footerCount=footerList.size();
+		if(footerCount==4)
 		{
-			if(!l2.contains(e))
-			{
-				l2.add(e);
-			}
+			System.out.println("Yes!!!!....Contains four footers in the page");
 		}
-		
-		System.out.println(l2);
+		driver.quit();
 		
 
 	}
 
 }
+ 

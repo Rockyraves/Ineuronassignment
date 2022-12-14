@@ -1,35 +1,34 @@
 package Assignment5;
 
-import java.util.ArrayList;
-import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Task2 {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
+
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver=new ChromeDriver();
+		driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
 		
-		List<String> l1=new ArrayList<String>();
-		l1.add("Git");
-		l1.add("Github");
-		l1.add("Gitlab");
-		l1.add("GitBash");
-		l1.add("selenium");
-		l1.add("Java");
-		l1.add("Maven");
+		Thread.sleep(2000);//To avoid "NoSuchElementException" i used Thread.Sleep and waiting for 2 sec.
 		
-		List<String> l2=new ArrayList<String>();
-		
-		for(String e:l1)
+		WebElement logo=driver.findElement(By.xpath("//div[@class='orangehrm-login-logo']"));
+		if(logo.isDisplayed())
 		{
-			if(e.startsWith("Git"))
-			{
-				l2.add(e);
-				
-			}
+			System.out.println("Yes!!..logo is present in the application");
+		}
+		else
+		{
+			System.out.println("Sorry!!..logo is not present in the application");
+
 		}
 		
-		System.out.println(l2);
-		
-
+		driver.quit();
 	}
 
 }
